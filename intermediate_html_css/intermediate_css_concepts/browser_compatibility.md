@@ -2,15 +2,18 @@
 
 As you continue your web development journey, it is important to keep in mind that the end users of your work might be using a variety of browsers: Chrome, Microsoft Edge, Firefox, and Safari to name a few. At the same time, the number of users using mobile operating systems is growing rapidly, therefore you should also consider mobile versions of different browsers.
 
+Today, it is impossible to imagine the Web without the use of browsers. We have witnessed a shift from standalone applications to HTML5 and Progressive Web Apps that allow applications to fully function within a browser. For example, Microsoft Word and Excel for the longest time could only be executed via a standalone application. Now, you can utilize those applications through any browser without the need to install any files.
+
 ### Lesson overview
 
 This section contains a general overview of topics that you will learn in this lesson.
 
 - Understand browser compatibility and its history.
+- Know what a browser engine is and how it affects development.
 - Know how new CSS features make their way into browsers.
 - Know how to check for compatibility.
 
-### Browser history
+### A Brief History of Browsers
 
 <span id="first-web-browser">The history of modern browsing began back in December of 1990 with the release of WorldWideWeb browser.</span> It was written by Tim Berners-Lee while working for the European nuclear research agency known as CERN. It was later renamed to Nexus, to avoid confusion with the World Wide Web.
 
@@ -20,17 +23,19 @@ The release of Nexus was just the beginning though, as in the next decade people
 
 In 1995 the world got introduced to the first version of Internet Explorer, which became the dominant player in the market. At some point, Internet Explorer was used by more than 90% of all users. To counter this dominance, Netscape launched what would become Mozilla Foundation which develops and maintains Firefox. Soon after that, in 2003, Apple launched Safari, and in 2008, Google launched Chrome.
 
-You're most likely familiar with most, if not all these names.<span id="most-used-browser"> There is a lot of [competition among browsers](https://www.youtube.com/watch?v=W4wWdmfOibY) still to this day, even though Chrome (and [Chromium](https://en.wikipedia.org/wiki/Chromium_(web_browser))) is the dominant player in the market</span>.
+You're most likely familiar with most, if not all these names.<span id="most-used-browser"> There is a lot of [competition among browsers](https://www.youtube.com/watch?v=W4wWdmfOibY) still to this day, even though Chrome (and [Chromium](<https://en.wikipedia.org/wiki/Chromium_(web_browser)>)) is the dominant player in the market</span>.
 
-### What is browser compatibility?
+### Browser Engines
 
-Today, it is impossible to imagine the Web without the use of browsers. We have witnessed a shift from standalone applications to HTML5 and Progressive Web Apps that allow applications to fully function within a browser. For example, Microsoft Word and Excel for the longest time could only be executed via a standalone application. Now, you can utilize those applications through any browser without the need to install any files.
+<span id="browser-engines">When a browser displays content it is actually processed through a distinct componant called the browser engine.<span> The browser engine processes all of the HTML and CSS that gets run through it. Think of everything that exists inside the browser's display window as a product of the browser engine. Think of everything outside of the window -- the tabs, the menus, and so on -- as the browser itself. If you really want to dig into it, there is another componant, the JavaScript engine, that processes the JavaScript behind the scenes.
 
-As companies compete for market share, different browsers are using different engines to display information on web pages. For example, Chrome and Chromium utilize Blink, while Safari uses WebKit.
+The ever popular comercial browser Chrome is based on the open source Chromium. Chromium runs on the Blink browser engine and the V8 JavaScript engine.
 
-Because of these differences, your applications may behave differently in the browser. Due to Chrome dominance, the vast majority of applications are designed to work smoothly with Chromium, and providing as good a level of performance in other browsers is secondary.
+Chrome and Chromium are not the only browsers to use Blink. Due to the more than 60% market share of the Chrome browser most developers focus their design on Chromium compatability. As such, many browsers, including Microsoft Edge, have based their browsers on Chromium and the Blink engine to make sure that they display content as those developers intended.
 
-For your web development projects to have a broader reach, you must make sure that you're testing your web applications against browsers which are most likely to be used by users. Chrome, Safari, Firefox, and other Chromium-based browsers (Microsoft Edge, Brave, etc.) are more common among regular users. But you may find you need to support less common ones as well depending on the user base or the company you work for. For Chromium browsers, if it works in Chrome, it should work in other related browsers as well.
+This means that features that work in Chrome almost assuredly work in Edge and [the others](https://en.wikipedia.org/wiki/Comparison_of_browser_engines). A website that looks good and runs smoothly in Chrome will likely run the same in all of the other Blink based browsers. The most popular engines besides Blink are Gecko, which powers Mozilla Firefox, and Apple's WebKit, which powers Safari as well as other browsers in iOS/iPadOS.
+
+What does this mean for development? For your web projects to have a broader reach, you must make sure that you're testing your web applications against browsers which are most likely to be used by users. Chrome, Safari, Firefox, and other Chromium-based browsers are more common among regular users. But you may find you need to support less common ones as well depending on the user base or the company you work for. For Chromium browsers, if it works in Chrome, it should work in other related browsers as well.
 
 ### Browser releases and new CSS features
 
@@ -44,7 +49,7 @@ Today, as standards around the web evolve and change, and web developers begin i
 
 As exciting as it is to implement new features, there is a risk of rushing. It would not be a positive experience for your users to find that, for example, your application used to work well in Firefox, but due to changes in the codebase it is now unusable in Firefox but works well in Safari. Thankfully, there is a tool that can help you prevent this situation.
 
-["Can I Use"](https://caniuse.com/) is a great resource to help you validate if new features are supported by browsers. It provides statistics on which browsers and platforms are supporting new technologies, and even which versions of those browsers support specific features.
+["Can I Use"](https://caniuse.com/) is a great resource to help you validate if new features are supported by browsers. It provides statistics on which browsers and platforms are supporting new technologies, and even which versions of those browsers support specific features. If you find yourself refering to [MDN Web Docs](https://developer.mozilla.org/), they contain the same data at the bottom of all relevant reference pages.
 
 It is generally good advice to implement new features when they are supported by most common browsers. This way you're less likely to encounter an issue that a lot of users will face.
 
@@ -56,8 +61,9 @@ Mobile devices mostly consist of smartphones and tablets. The most popular mobil
 
 As you're developing your applications, you must also consider whether your application should be fully mobile compatible. There are a couple of specifics about mobile browsers that you need to keep in mind.
 
-1. <span id="apple-browsers">On iOS and iPadOS, Safari is technically the only supported browser. Yes, you can install Chrome or Firefox, and you can even set them as a default, but they are not full browsers. They are still using the Safari rendering engine (WebKit). Therefore, for your web application to work for Apple users, you have to ensure support for WebKit and other technologies used in Safari.
-It's important to remember that mobile browsers are not one-to-one with their desktop counterparts. A project that works in the desktop version of Safari might still need adjustments to work properly on the mobile version of the same browser.</span>
+1. <span id="apple-browsers">Outside the EU, Safari is technically the only browser supported on iOS and iPadOS</span>. Yes, you can install Chrome or Firefox, and you can even set them as a default, but they are not full browsers. They are [still using the Safari rendering engine (WebKit)](https://adactio.com/journal/17428). Therefore, for your web application to work for Apple users, you have to ensure support for WebKit and other technologies used in Safari.
+   It's important to remember that mobile browsers are not one-to-one with their desktop counterparts. A project that works in the desktop version of Safari might still need adjustments to work properly on the mobile version of the same browser.
+   Note that this is [no longer the case in the EU](https://www.theverge.com/2024/1/25/24050478/apple-ios-17-4-browser-engines-eu).
 1. Another consideration for mobile browsers is the magnitude of different screen sizes. It is virtually impossible to have every physical device available to test, and thankfully browsers provide a way to emulate other devices. The important piece to remember is that when, for example, you emulate an iPhone in Chrome, all that you're emulating is the screen size. Keep in mind that any specific considerations of the operating system will not be reproducible. Which means that even though everything functions well in Chrome when emulating a device, it could behave differently on the actual phone or tablet device.
 
 ### Assignment
@@ -65,7 +71,7 @@ It's important to remember that mobile browsers are not one-to-one with their de
 <div class="lesson-content__panel" markdown="1">
 
 - Review [Can I Use](https://caniuse.com/). Are all technologies you have encountered so far supported by popular browsers?
-- Read this article [about browsers on iOS](https://adactio.com/journal/17428).
+- Read [this article about browsers on iOS](https://adactio.com/journal/17428). Also read [this article](https://www.theverge.com/2024/1/25/24050478/apple-ios-17-4-browser-engines-eu) which explains how this is no longer the case in the EU.
 
 </div>
 
@@ -75,6 +81,7 @@ The following questions are an opportunity to reflect on key topics in this less
 
 - [What is the most used browser currently?](#most-used-browser)
 - [What was the original name of the first web browser?](#first-web-browser)
+- [What are browser engines and how do they inform development?](#browser-engines)
 - [How are mobile browsers different on Apple mobile operating systems from Android?](#apple-browsers)
 
 ### Additional resources
